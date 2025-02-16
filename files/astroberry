@@ -1,5 +1,5 @@
 upstream novnc {
-    server 127.0.0.1:8080;
+    server 127.0.0.1:6080;
 }
 
 upstream indiwebmanager {
@@ -15,7 +15,20 @@ upstream astropanel {
 }
 
 server {
-    listen 80;
+   listen 80;
+   server_name: tahti.local;
+   return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443;
+    server_name tahti.local;
+
+    ssl_certificate /etc/selfsigned/self.pem;
+    ssl_certificate_key /etc/selfsigned/key.pem;
+
+   # ssl_client_certificate /path/to/your/ca.pem
+   # ssl_verify_client on;
 
     root /var/www/html;
 

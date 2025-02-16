@@ -13,7 +13,7 @@ PROJECT(astroberry-server-wui NONE)
 #sudo mkdir /etc/selfsigned/
 #sudo openssl req -new -x509 -days 365 -nodes -out /etc/selfsigned/self.pem -keyout /etc/selfsigned/key.pem
 
-
+# need to install some python packages gps3 python-socketio ephem
 set(CONFIG_INSTALL_DIR "/etc")
 set(WWW_INSTALL_DIR "/var/www")
 
