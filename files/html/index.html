@@ -155,28 +155,24 @@
       <!-- TODO a id="logo" href="https://www.Tahti.io/" target="_blank">Project Site</a>-->
     </div>
 
-    function fetchTelescopeData() {
-   fetch('/telescope-data')
-       .then(response => response.json())
-       .then(data => {
-           // Convert RA/Dec to Alt/Az if necessary
-            if (typeof data == "object") {
-             updateTelescopePosition(data.azimuth, data.altitude);
-            }
-        })
-       .catch(error => console.error("Error fetching telescope data:", error));
-}
-
-setInterval(fetchTelescopeData, 1000);
-
-
-
-
-
    <div id="starmap" style="width: 100%; height: 600px;"></div>
 
    <script>
-       var planetarium = S.virtualsky({
+       function fetchTelescopeData() {
+         fetch('/telescope-data')
+         .then(response => response.json())
+         .then(data => {
+           // Convert RA/Dec to Alt/Az if necessary
+            if (typeof data == "object") {
+              updateTelescopePosition(data.azimuth, data.altitude);
+            }
+         })
+         .catch(error => console.error("Error fetching telescope data:", error));
+        }
+
+      setInterval(fetchTelescopeData, 1000);
+      
+     var planetarium = S.virtualsky({
            id: "starmap",
            projection: "stereo",
            az: 180, // Initial azimuth
