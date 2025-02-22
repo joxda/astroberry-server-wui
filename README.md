@@ -1,2 +1,2 @@
-# astroberry-server-wui
-Astroberry Server WUI is a web interface for Astroberry Server
+# Tahti webui
+Tahti server webUI is a web interface.
