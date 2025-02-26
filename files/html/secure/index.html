@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dashboard</title>
+   <style>
+       body {
+           margin: 0;
+           font-family: Arial, sans-serif;
+       }
+       .header {
+           background-color: #333;
+           color: white;
+           padding: 15px;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           position: fixed;
+           width: 100%;
+           top: 0;
+           left: 0;
+           z-index: 1000;
+       }
+       .header h1 {
+           margin: 0;
+           font-size: 20px;
+       }
+       .logout-btn {
+           background-color: red;
+           color: white;
+           border: none;
+           padding: 10px 15px;
+           cursor: pointer;
+           text-decoration: none;
+       }
+       .nav {
+           background-color: #444;
+           display: flex;
+           padding: 10px;
+           position: fixed;
+           top: 55px;
+           width: 100%;
+           z-index: 999;
+       }
+       .nav a {
+           color: white;
+           text-decoration: none;
+           padding: 10px 15px;
+           margin: 0 5px;
+           background-color: #555;
+           border-radius: 5px;
+       }
+       .nav a:hover {
+           background-color: #777;
+       }
+       .content {
+           margin-top: 100px; /* Adjust for fixed header and nav */
+           width: 100%;
+           height: calc(100vh - 100px);
+           border: none;
+       }
+   </style>
+</head>
+<body>
+
+   <!-- Header -->
+   <div class="header">
+       <h1>Dashboard</h1>
+       <a href="/logout" class="logout-btn">Logout</a>
+   </div>
+
+   <!-- Navigation Menu -->
+   <div class="nav">
+       <a href="panels.html" target="mainFrame">Panels</a>
+       <a href="/desktop/vnc.html?autoconnect=true" target="mainFrame">VNC</a>
+       <a href="indi.html" target="mainFrame">INDI</a>
+   </div>
+
+   <!-- Content Area -->
+   <iframe src="panels.html" class="content" name="mainFrame"></iframe>
+
+</body>
+</html>
+
+Sent from my iPhone
