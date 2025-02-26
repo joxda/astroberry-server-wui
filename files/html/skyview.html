@@ -1,0 +1,47 @@
+<script src="js/stuquery.min.js"></script>
+    <script src="js/virtualsky.min.js"></script>
+
+<div id="starmap" style="width: 100%; height: 600px;"></div>
+
+   <script>
+       function fetchTelescopeData() {
+         fetch('/telescope-data')
+         .then(response => response.json())
+         .then(data => {
+           // Convert RA/Dec to Alt/Az if necessary
+            if (typeof data == "object") {
+              updateTelescopePosition(data.azimuth, data.altitude);
+            }
+         })
+         .catch(error => console.error("Error fetching telescope data:", error));
+        }
+
+      setInterval(fetchTelescopeData, 1000);
+      
+     var planetarium = S.virtualsky({
+           id: "starmap",
+           projection: "stereo",
+           az: 180, // Initial azimuth
+           alt: 45, // Initial altitude
+           constellations: true,
+           live: false  // We update manually
+       });
+
+       function updateTelescopePosition(ra, dec) {
+         var altaz = planetarium.coord2horizon(ra, dec);
+         if (altaz && typeof altaz == "object") {
+           planetarium.setAzimuth(altaz.az);
+           planetarium.setAltitude(alzaz.alt);
+         }
+       }
+
+       function fetchTelescopeData() {
+           fetch('/telescope-data')  // Replace with actual telescope API endpoint
+               .then(response => response.json())
+               .then(data => {
+                   updateTelescopePosition(data.ra, data.dec);
+               })
+               .catch(error => console.error("Error fetching telescope data:", error));
+       }
+      setInterval(fetchTelescopeData, 1000);  // Fetch every second
+   </script>
