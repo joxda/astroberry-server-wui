@@ -181,7 +181,8 @@
   </script>
   <script>
     var urlp=[];s=location.toString().split('?');s=s[1].split('&');for(i=0;i<s.length;i++){u=s[i].split('=');urlp[u[0]]=u[1];}
-    let text = urlp['t'] ||  ''; 
-    document.getElementById("response").innerHTML = text;
+    let text = urlp['t'] ||  '';
+    const decoded = decodeURIComponent(text);
+    document.getElementById("response").innerHTML = decoded;
   </script>
 </html>
